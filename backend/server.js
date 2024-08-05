@@ -1,7 +1,16 @@
 const express = require('express')
+const colors = require('colors')
 const dotenv = require('dotenv').config()
 const {errorHandler} = require('./middleware/errorMiddleware')
+const connectDB = require('./config/db')
 const port = process.env.PORT || 5000
+
+
+// Debug log to ensure the MONGO_URI is loaded
+console.log('Environment:', process.env.NODE_ENV);
+console.log('MongoDB URI:', process.env.MONGO_URI);
+
+connectDB()
 
 const app = express()
 
